@@ -7,6 +7,8 @@ import { EditComponent } from './edit.component';
 import { LocationComponent } from './location.component';
 import { createComponent } from '@angular/compiler/src/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DepartmentComponent } from './Department/department.component';
+import { DepartmentModule } from './Department/department.module';
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LocationRoutingModule,
+    DepartmentModule,
     FormsModule,
     ReactiveFormsModule,
 

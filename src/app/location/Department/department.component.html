@@ -1,13 +1,14 @@
 
 
 
-<a  routerLink="Create"><i class="fa fa-plus" aria-hidden="true"> Add New</i></a>
+<a routerLink="Create"  ><i class="fa fa-plus" aria-hidden="true"> Add New</i></a>
 
 <table class="table table-bordered">
   <thead class="ng-tns-2-2">
     <tr >
-      <th class="ng-tns-2-2">Location ID</th>
+      <th class="ng-tns-2-2">Department ID</th>
       <th class="ng-tns-2-2">Description</th>
+      <th class="ng-tns-2-2">Location</th>
      
      
       <th class="ng-tns-2-2">Edit</th>
@@ -20,20 +21,22 @@
     </tr>
   </thead>
   <tbody class="ng-tns-2-2">
-    <tr data-toggle="collapse" class="ng-tns-2-2" *ngFor="let item of allLocations | async">
+    <tr data-toggle="collapse" class="ng-tns-2-2" *ngFor="let item of alldepartments | async">
     
       <td >
-        <a [routerLink]= "['departments/', item.Location_Id]"  ><i class="fa fa-edit" aria-hidden="true"></i>        {{item.Location_Id }}
+        <a [routerLink]= "['departments/', item.DepartmentID]"  ><i class="fa fa-edit" aria-hidden="true"></i>        {{item.DepartmentID }}
         </a>
       </td>    
       <td>
-        {{item.Description}}
+        {{item.DepartmentName}}
       </td>
-      
+      <td>
+        {{item.LocationName}}
+      </td>
       
       <td>
          
-        <a [routerLink]= "['Edit', item]"  ><i class="fa fa-edit" aria-hidden="true"></i>Edit</a>
+        <a [routerLink]="['edit/',item.DepartmentID]"  ><i class="fa fa-edit" aria-hidden="true"></i>Edit</a>
       </td>
       <td>
       <a [routerLink]="" (click)="Delete(item)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
