@@ -6,13 +6,16 @@ import { CreateComponent } from './create.component';
 import { EditComponent } from './edit.component';
 import { LocationComponent } from './location.component';
 import { createComponent } from '@angular/compiler/src/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [LocationComponent,CreateComponent, EditComponent],
+  declarations: [LocationComponent, CreateComponent, EditComponent],
   imports: [
     CommonModule,
     LocationRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   exports: [ ]

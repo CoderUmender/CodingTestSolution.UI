@@ -11,9 +11,32 @@ import { location } from 'src/app/models/location';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  locationform: FormGroup;
+  loading = false;
+  submitted = false;
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private locationservice: LocationService
+    ) { }
 
   ngOnInit() {
-  }
 
+    this.locationform = this.formBuilder.group({
+      Description: ['', Validators.required]
+  });
+
+  }
+  get f() { return this.locationform.controls; }
+  onSubmit() {
+    this.submitted = true;
+    const loc = new location();
+    loc.Description = this.locationform.get('Description').value;
+    // stop here if form is invalid
+    if (this.locationform.invalid) {
+        return;
+    }
+    this.loading = true;
+    this.locationservice.add(loc);
+}
 }

@@ -4,13 +4,14 @@ import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { location } from '../models/location';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
    localUrl = 'api/v1/location/';
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
 getLocations(): Observable<location>
 {
@@ -24,8 +25,19 @@ add(description: location) {
   const options = {headers: {'Content-Type': 'application/json'}};
   return   this.http.post<location>(`${environment.ApiUrl}` + 'api/v1/Location/', JSON.stringify(description), options).subscribe(
         (t: location) => console.log(JSON.stringify(t)),
-        // err => this.router.navigate(['/dashboard/Status500'], { queryParams: { error: 500 } }),
-        // () => this.router.navigateByUrl('/settings')
+         err => console.log('error'),
+         () => this.router.navigateByUrl('/locations')
+    );
+}
+edit(description: location) {
+
+
+
+  const options = {headers: {'Content-Type': 'application/json'}};
+  return   this.http.put<location>(`${environment.ApiUrl}` + 'api/v1/Location/', JSON.stringify(description), options).subscribe(
+        (t: location) => console.log(JSON.stringify(t)),
+         err => console.log('error'),
+         () => this.router.navigateByUrl('/locations')
     );
 }
 
