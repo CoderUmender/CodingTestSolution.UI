@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AddlocationComponent } from './location/addlocation/addlocation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LocationComponent,
-    LoginComponent
+    LoginComponent,
+    AddlocationComponent
   ],
   imports: [
     

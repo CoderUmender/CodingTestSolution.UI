@@ -1,1 +1,38 @@
-<p>location works!</p>
+
+<!-- <a [routerLink]="['/user/bob']" [queryParams]="{debug: true}" fragment="education">
+    link to user component
+  </a> -->
+  
+
+  <div class="col-md-6 offset-md-3 mt-5">
+   
+    <div class="card">
+        <h4 class="card-header">
+            <a [routerLink]="" (click)="AddLocation()">add</a>
+
+        </h4>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Location ID</th>
+                    <th>Location Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let location of allLocations | async">
+                    <td>{{location.Location_Id}}</td>
+                    <td>{{location.Description}}</td>
+                    <td> <a [routerLink]="['addlocation']"  fragment="education">  Edit  </a></td>
+                    <td> <a [routerLink]="['addlocation']"  fragment="education">Delete </a></td>
+                  
+                 
+                </tbody>
+              </table>
+           
+        </div>
+    </div>
+</div>

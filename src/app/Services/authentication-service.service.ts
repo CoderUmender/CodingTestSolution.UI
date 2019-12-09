@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationServiceService {
-
+user= new User();
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -23,7 +23,13 @@ export class AuthenticationServiceService {
   }
 
   login(username: string, password: string) {
-      return this.http.post<any>(`${environment.ApiUrl}/users/authenticate`, { username, password })
+      this.user.username=username;
+      this.user.password=password;
+      
+      
+     return this.http.post<any>('http://localhost:58063/api/users/Authenticate/', this.user)
+    // return this.http.post(`${environment.ApiUrl}',{user})
+   // return this.http.post<any>(`http://localhost:58063/users/authenticate`, { username, password })
           .pipe(map(user => {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));

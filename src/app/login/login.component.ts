@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationServiceService } from '../Services/authentication-service.service';
+import { User } from '../models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  user: User;
   constructor( private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -43,11 +45,12 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    
+    this.authenticationService.login(this.f.username.value,this.f.password.value)
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate([this.returnUrl]);
+               // this.router.navigate([this.returnUrl]);
             },
             error => {
                 this.error = error;
