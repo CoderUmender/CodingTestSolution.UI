@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LocationComponent implements OnInit {
 
-  allLocations:Observable<location>;
+  allLocations: Observable<location>;
+  showlocations = true;
   constructor(private locationservice:LocationService ,private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class LocationComponent implements OnInit {
   }
   AddLocation()
   {
-   //this.router.navigate(['addlocation']);
+    this.showlocations=false;
     this.router.navigateByUrl('/addlocation');
     
   }

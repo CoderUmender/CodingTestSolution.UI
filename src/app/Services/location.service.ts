@@ -12,21 +12,21 @@ export class LocationService {
  
   constructor(private http: HttpClient) { }
 
-getLocations():Observable<location>
+getLocations(): Observable<location>
 {
-
-  alert(`${environment.ApiUrl}`+this.localUrl);
-  return this.http.get<location>(`${environment.ApiUrl}`+this.localUrl);
+  return this.http.get<location>(`${environment.ApiUrl}` + this.localUrl);
 }
-add(description: string) {
-  
-  
-  alert(description);
- //return this.http.post<any>('http://localhost:58063/api/users/Authenticate/', this.user)
-// return this.http.post(`${environment.ApiUrl}',{user})
- //return this.http.post<any>(`${environment.ApiUrl}`+this.localUrl +description);
- return this.http.post<any>(`${environment.ApiUrl}`+this.localUrl ,  
- description);  
+// tslint:disable-next-line:no-shadowed-variable
+add(description: location) {
+
+
+
+  const options = {headers: {'Content-Type': 'application/json'}};
+  return   this.http.post<location>(`${environment.ApiUrl}` + 'api/v1/Location/', JSON.stringify(description), options).subscribe(
+        (t: location) => console.log(JSON.stringify(t)),
+        // err => this.router.navigate(['/dashboard/Status500'], { queryParams: { error: 500 } }),
+        // () => this.router.navigateByUrl('/settings')
+    );
 }
 
 }

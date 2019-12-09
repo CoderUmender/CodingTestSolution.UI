@@ -5,13 +5,13 @@
   
 
   <div class="col-md-6 offset-md-3 mt-5">
-   
-    <div class="card">
+    <a [routerLink]="" (click)="AddLocation()">add location</a>
+    <div class="card" >
         <h4 class="card-header">
-            <a [routerLink]="" (click)="AddLocation()">add</a>
-
+           
+Locations
         </h4>
-        <div class="card-body">
+        <div class="card-body" >
             <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -26,7 +26,7 @@
                   <tr *ngFor="let location of allLocations | async">
                     <td>{{location.Location_Id}}</td>
                     <td>{{location.Description}}</td>
-                    <td> <a [routerLink]="['addlocation']"  fragment="education">  Edit  </a></td>
+                    <td>  <a [routerLink]= "['addlocation', location]"  ><i class="fa fa-edit" aria-hidden="true"></i> edit</a> </td>
                     <td> <a [routerLink]="['addlocation']"  fragment="education">Delete </a></td>
                   
                  

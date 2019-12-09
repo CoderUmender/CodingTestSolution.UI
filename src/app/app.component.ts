@@ -12,6 +12,8 @@ import { User } from '../app/models/user';
 export class AppComponent {
   currentUser: User;
   title = 'CodingTestUI';
+  showlocations = true;
+  addlocations = false;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationServiceService
@@ -23,4 +25,10 @@ logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
 }
+AddLocation()
+  {
+    this.showlocations = false;
+  this.AddLocation=true;
+    
+  }
 }
