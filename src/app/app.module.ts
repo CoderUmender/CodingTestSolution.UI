@@ -7,13 +7,16 @@ import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AddlocationComponent } from './location/addlocation/addlocation.component';
+import { LocationModule } from './location/location.module';
+import { LocationRoutingModule } from './location/location-routing.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LocationComponent,
-    LoginComponent,
-    AddlocationComponent
+    AppComponent
+    
+    
+    
   ],
   imports: [
     
@@ -21,9 +24,11 @@ import { AddlocationComponent } from './location/addlocation/addlocation.compone
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LocationModule,
+    LocationRoutingModule,
   ],
-  providers: [HttpClientModule,HttpClient ],
+  providers: [HttpClientModule,HttpClient ,{provide: LocationStrategy, useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

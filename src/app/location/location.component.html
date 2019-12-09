@@ -1,38 +1,44 @@
 
-<!-- <a [routerLink]="['/user/bob']" [queryParams]="{debug: true}" fragment="education">
-    link to user component
-  </a> -->
-  
 
-  <div class="col-md-6 offset-md-3 mt-5">
-    <a [routerLink]="" (click)="AddLocation()">add location</a>
-    <div class="card" >
-        <h4 class="card-header">
-           
-Locations
-        </h4>
-        <div class="card-body" >
-            <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Location ID</th>
-                    <th>Location Name</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let location of allLocations | async">
-                    <td>{{location.Location_Id}}</td>
-                    <td>{{location.Description}}</td>
-                    <td>  <a [routerLink]= "['addlocation', location]"  ><i class="fa fa-edit" aria-hidden="true"></i> edit</a> </td>
-                    <td> <a [routerLink]="['addlocation']"  fragment="education">Delete </a></td>
-                  
-                 
-                </tbody>
-              </table>
-           
-        </div>
-    </div>
-</div>
+
+<a  routerLink="Create"><i class="fa fa-plus" aria-hidden="true"> Add New</i></a>
+
+<table class="table table-bordered">
+  <thead class="ng-tns-2-2">
+    <tr >
+      <th class="ng-tns-2-2">Location ID</th>
+      <th class="ng-tns-2-2">Description</th>
+     
+     
+      <th class="ng-tns-2-2">Edit</th>
+
+      <th class="ng-tns-2-2">Delete</th>
+      <!-- <th _ngcontent-c10="" class="ng-tns-c10-2">Consumers</th> -->
+
+
+
+    </tr>
+  </thead>
+  <tbody class="ng-tns-2-2">
+    <tr data-toggle="collapse" class="ng-tns-2-2" *ngFor="let item of allLocations | async">
+    
+      <td >
+        {{item.Location_Id }}
+    
+      </td>    
+      <td>
+        {{item.Description}}
+      </td>
+      
+      
+      <td>
+         
+        <a [routerLink]= "['Edit', item]"  ><i class="fa fa-edit" aria-hidden="true"></i>Edit</a>
+      </td>
+      <td>
+      <a [routerLink]="" (click)="Delete(item.Location_Id)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+  </td>
+    </tr>
+
+  </tbody>
+</table>

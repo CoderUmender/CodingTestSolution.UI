@@ -28,7 +28,7 @@ logout() {
 AddLocation()
   {
     this.showlocations = false;
-  this.AddLocation=true;
+ 
     
   }
 }
