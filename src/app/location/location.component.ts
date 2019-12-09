@@ -27,14 +27,14 @@ export class LocationComponent implements OnInit {
     this.showlocations = false;
     this.router.navigateByUrl('/addlocation');
   }
-  Delete(name: string) {
-    // this._thresholdsService.Delete(name).subscribe(
-    //   () => console.log(name + ' threshold Deleted'),
-    //   err => this.router.navigate(['/dashboard/Status500'], { queryParams: { error: 500 } }),
-    //   () => this.router.navigate(['/thresholds'], {
-    //     queryParams: {refresh: new Date().getTime()}
-    //  })
-    // );
+  Delete(name: location) {
+    this.locationservice.delete(name).subscribe(
+      () => console.log(name + ' location Deleted'),
+      err => console.log(''),
+      () => this.router.navigate(['/locations'], {
+        queryParams: {refresh: new Date().getTime()}
+     })
+    );
       }
 
 }

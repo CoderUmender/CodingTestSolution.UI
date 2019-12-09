@@ -12,7 +12,7 @@ import { location } from 'src/app/models/location';
 export class EditComponent implements OnInit {
 
   locationform: FormGroup;
-  location: location;
+
   loading = false;
   submitted = false;
   locationid: string;
@@ -24,16 +24,20 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.locationid = this.route.snapshot.paramMap.get('Location_Id');
+    
     this.locationform = this.formBuilder.group({
       Description: ['', Validators.required]
   });
+    this.locationform.controls.Description.setValue(this.route.snapshot.paramMap.get('Description'));
 }
 get f() { return this.locationform.controls; }
 onSubmit() {
+  // tslint:disable-next-line:no-shadowed-variable
+  const loc = new location();
+  loc.Description = this.locationform.get('Description').value;
+  loc.Location_Id = Number(this.locationid);
 
-    this.location.Description =  this.locationform.get('Description').value;
-    this.location.Location_Id = Number(this.locationid);
-    this.locationservice.edit(this.location);
+  this.locationservice.edit(loc);
       }
 
 }

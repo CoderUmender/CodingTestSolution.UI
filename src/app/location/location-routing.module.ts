@@ -5,6 +5,7 @@ import { CreateComponent } from './create.component';
 import { AddlocationComponent } from './addlocation/addlocation.component';
 import { createComponent } from '@angular/compiler/src/core';
 import { EditComponent } from './edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ path: 'Edit', component: EditComponent
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes),FormsModule],
+  exports: [RouterModule,FormsModule]
 })
 export class LocationRoutingModule { }

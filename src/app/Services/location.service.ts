@@ -40,5 +40,10 @@ edit(description: location) {
          () => this.router.navigateByUrl('/locations')
     );
 }
+delete(description: location) {
+  const id = description.Location_Id;
+  const options = {headers: {'Content-Type': 'application/json'}};
+  return this.http.delete<void>(`${environment.ApiUrl}` + 'api/v1/Location/?id=' + `${id}`);
+}
 
 }
