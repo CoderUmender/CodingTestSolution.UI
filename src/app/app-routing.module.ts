@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   // path: '',
   // component: LayoutComponent,
-  // { path: '', redirectTo: 'locations', pathMatch: 'prefix' },
+   { path: '', redirectTo: 'locations', pathMatch: 'prefix' },
   // { path: 'locations', loadChildren: () => import('./location/location.module').then(m => m.LocationModule)},
   // otherwise redirect to location
   {
@@ -21,7 +21,6 @@ const routes: Routes = [
        { path: 'locations', loadChildren: () => import('./location/location.module').then(m => m.LocationModule)},
     ]
 }
-  
 ];
 
 @NgModule({
