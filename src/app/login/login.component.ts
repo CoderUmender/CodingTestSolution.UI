@@ -56,8 +56,9 @@ export class LoginComponent implements OnInit {
             data => {
            
               this.loading = false;
-              alert();
-              this.router.navigate(['location']);
+            
+              this.router.navigate(['/locations']);
+              location.reload();
             },
             error => {
                 this.error = 'invalid user';
