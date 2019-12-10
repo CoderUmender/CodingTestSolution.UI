@@ -21,15 +21,16 @@ user= new User();
   public get currentUserValue(): User {
       return this.currentUserSubject.value;
   }
+// tslint:disable-next-line:no-shadowed-variable
 
-  login(username: string, password: string) {
-      this.user.username=username;
-      this.user.password=password;
+  login(user: User) {
+     
       
-      
-     return this.http.post<any>('http://localhost:58063/api/users/Authenticate/', this.user)
+    const options = {headers: {'Content-Type': 'application/json'}};
+    return   this.http.post<User>(`${environment.ApiUrl}` + 'api/v1/user/', JSON.stringify(user), options)
     // return this.http.post(`${environment.ApiUrl}',{user})
    // return this.http.post<any>(`http://localhost:58063/users/authenticate`, { username, password })
+          // tslint:disable-next-line:no-shadowed-variable
           .pipe(map(user => {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));

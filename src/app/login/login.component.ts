@@ -17,11 +17,11 @@ export class LoginComponent implements OnInit {
   error = '';
   user: User;
   constructor( private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationServiceService) {
-      if (this.authenticationService.currentUserValue) { 
-        this.router.navigate(['/']);
+               private route: ActivatedRoute,
+               private router: Router,
+               private authenticationService: AuthenticationServiceService) {
+      if (this.authenticationService.currentUserValue) {
+       this.router.navigate(['/locations/']);
     }
      }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   });
 
   // get return url from route parameters or default to '/'
-  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+   
   }
   get f() { return this.loginForm.controls; }
 
@@ -40,21 +40,29 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
-        return;
-    }
+    // if (this.loginForm.invalid) {
+    //     return;
+    // }
 
     this.loading = true;
-    
-    this.authenticationService.login(this.f.username.value,this.f.password.value)
+    const user = new User();
+
+    user.username = this.f.username.value;
+    user.password = this.f.password.value;
+
+    this.authenticationService.login(user)
         .pipe(first())
         .subscribe(
             data => {
-               // this.router.navigate([this.returnUrl]);
+           
+              this.loading = false;
+              alert();
+              this.router.navigate(['location']);
             },
             error => {
-                this.error = error;
+                this.error = 'invalid user';
                 this.loading = false;
+               // this.router.navigate(['/login']);
             });
 }
 
