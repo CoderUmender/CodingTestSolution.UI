@@ -14,7 +14,7 @@ const routes: Routes = [
    { path: 'login', component: LoginComponent },
   // { path: 'location', component: LoginComponent },
   // { path: 'locations', loadChildren: () => import('./location/location.module').then(m => m.LocationModule)},
-  // otherwise redirect to location
+  //
   {
     path: '',
     component: AppComponent,
