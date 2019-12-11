@@ -13,8 +13,11 @@ export class SubcategoryService {
 
   getdsubs(id: string, did: string, cid: string): Observable<subcategory>
 {
-//api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory
+
+const url = `${environment.ApiUrl}` + 'api/v1/location/' + id + '/department/' + did + '/category/' +  cid + '/subcategory/';
+
   // tslint:disable-next-line:max-line-length
-  return this.http.get<subcategory>(`${environment.ApiUrl}` + 'api/v1/location/' + id + '/department/' + did + '/category' +  cid + '/subcategory');
+return this.http.get<subcategory>(url);
+alert(0);
 }
 }
