@@ -6,9 +6,9 @@
 <table class="table table-bordered">
   <thead class="ng-tns-2-2">
     <tr >
-      <th class="ng-tns-2-2">Department ID</th>
+      <th class="ng-tns-2-2">CategoryID ID</th>
       <th class="ng-tns-2-2">Description</th>
-      <th class="ng-tns-2-2">Location</th>
+      <th class="ng-tns-2-2">Department</th>
      
      
       <th class="ng-tns-2-2">Edit</th>
@@ -21,17 +21,17 @@
     </tr>
   </thead>
   <tbody class="ng-tns-2-2">
-    <tr data-toggle="collapse" class="ng-tns-2-2" *ngFor="let item of alldepartments | async">
+    <tr data-toggle="collapse" class="ng-tns-2-2" *ngFor="let item of allcats | async">
     
       <td >
-        <a [routerLink]= "['categories/', item.DepartmentID ]"  ><i class="fa fa-edit" aria-hidden="true"></i>        {{item.DepartmentID }}
+        <a [routerLink]= "['subcategory/', item.CategoryID ]"  ><i class="fa fa-edit" aria-hidden="true"></i>        {{item.CategoryID }}
         </a>
       </td>    
       <td>
-        {{item.DepartmentName}}
+        {{item.CategoryName}}
       </td>
       <td>
-        {{item.LocationName}}
+        {{item.DepartmentName}}
       </td>
       
       <td>
